@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+legend {
+    margin-left: 20px;
+    font-size: larger;
+    font-style: italic;
+}
+
+#score {
+    display:block;
+    text-align: center;
+}

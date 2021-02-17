@@ -1,0 +1,17 @@
+[
+    {
+        "question": "What it Earth's diameter?",
+        "answer": ["11 422 km", "10 122 km", "12 742 km"],
+        "correct": "3"
+    },
+    {
+        "question": "How old is the Earth",
+        "answer": ["4.54 billion years", "2.51 million years", "2.54 billion years"],
+        "correct": "1"
+    },
+    {
+        "question": "UY Scuti is the biggest know star in the universe - how many times bigger it is compared to sun?",
+        "answer": ["1700", "500", "120"],
+        "correct": "1"
+    }
+]

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="main.js" defer></script>
+    <title>Questionaire</title>
+</head>
+<body>
+    <form>
+         <fieldset data-role="controlgroup" data-iconpos="right">
+             <legend id="question">Question:</legend>
+                <input type="radio" name="choose" id="1">
+                <label for="1" name="answer">Answer one</label>
+                <input type="radio" name="choose" id="2">
+                <label for="2" name="answer">Answer two</label>
+                <input type="radio" name="choose" id="3">
+                <label for="3" name="answer">Answer three</label>
+          </fieldset>
+    </form>
+    <button id="next">Answer</button>
+    <output id="score"></output>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="form1" >
+        <!--TEXTAREA-->
+        <textarea id="webform" name="webform" rows="4" cols="50">This is exercise for html input types. This includes also some basic input validation.
+        </textarea><br>
+        <!--TEXT-->
+        <label for="name">Enter name:</label>
+        <input type="text" id="name" name="name"><br>
+        <!--PASSWORD-->
+        <label for="password">Enter password:</label>
+        <input type="password" id="password" name="password" placeholder="password" required><br>
+        <label for="password_check">Enter password again:</label>
+        <input type="password" id="password_check" name="password_check" placeholder="confirm password" required><br>
+        <!--DATE-->
+        <label for="birthday">Your birthday:</label>
+        <input type="date" id="birthday" name="birthday"><br>
+        <!--EMAIL-->
+        <label for="email">Your email:</label>
+        <input type="email" id="email" name="email"><br>
+        <!--TEL-->
+        <label for="telephonenumber">Telephone number</label>
+        <input type="tel" name="telephonenumber" id="telephonenumber">
+        <!--RADIO-->
+        <h2>Your favorite things and other stuff</h2>
+        Pizza toppings<br>
+        <label for="cheese">Cheese:</label>
+        <input type="radio" id ="cheese" name="topping">
+        <label for="pineapple">Pineapple:</label>
+        <input type="radio" id ="pineapple" name="topping">
+        <label for="salami">Salami:</label>
+        <input type="radio" id ="salami" name="topping"><br>
+        <!--CHECKBOX-->
+        <lable for="cat">Cat:</lable>
+        <input type="checkbox" id="cat" name="liked_animals">
+        <lable for="dog">Dog:</lable>
+        <input type="checkbox" id="dog" name="liked_animals">
+        <lable for="horse">Horse:</lable>
+        <input type="checkbox" id="horse" name="liked_animals"><br>
+        <!--COLOR-->
+        <label for="favorite_color">Favorite color:</label>
+        <input type="color" id="favorite_color" name="favorite_color" value="white"><br>
+        <!--TIME-->
+        <label for="time">Favorite time of day:</label>
+        <input type="time" id="time" name="time" value="09:00"><br>
+        <!--NUMBER-->
+        <label for="favorite-number">Favorite number:</label>
+        <input type="number" id="favorite-number" name="favorite-number" value="42"><br>
+        <!--URL-->
+        <lable for="url">Favorite website</lable>
+        <input type="url" id="url" name="url"><br>
+        <!--RANGE-->
+        <lable for="volume">Volume</lable>
+        <input type="range" id="volume" name="volume" value="100"><br>
+        <!--SEARCH-->
+        <lable for="search">Serch for</lable>
+        <input type="search" id="search" name="search"><br>
+        <!--SUBMIT-->
+        <input type="button" value="SUBMIT" onclick="return validateFormAndOutput()">
+        <br>
+        <output id="output"></output>
+    </form>
+    <script>
+        function validateFormAndOutput() {
+            const password = document.getElementById("password")
+            const checkpassword = document.getElementById("password_check")
+            if (!password.value) {
+                window.alert('Give a password')
+                return false
+            }
+            
+            if(password.value != checkpassword.value) {
+                window.alert("passwords don't match")
+                return false
+            } 
+
+            if(password.length < 8 && password.length > 30) {
+                window.alert('password length should be 8-30 characters')
+                return false
+            }
+            
+            let re = /[^a-zA-Z0-9.,_-]/
+            let found_bad_character = re.test(password.value)
+            
+            if(found_bad_character) {
+                window.alert("Use following characters: a-z, A-Z, 0-9 and .,_-")
+                return false
+            }
+
+            const name = document.getElementById('name').value
+            const birthday = document.getElementById('birthday').value
+            const email = document.getElementById('email').value
+            const tel = document.getElementById('telephonenumber').value
+            const checkBoxes = document.getElementsByName('topping')
+            const radioBoxes = document.getElementsByName('liked_animals')
+            const color = document.getElementById('favorite_color').value
+            const time = document.getElementById('time').value
+            const number = document.getElementById('favorite-number').value
+            const url = document.getElementById('url').value
+            const volume = document.getElementById('volume').value
+            const search = document.getElementById('search').value
+
+            let toppingFavorite 
+            for(let i = 0; i < checkBoxes.length; i++) {
+                if(checkBoxes[i].checked) {
+                    toppingFavorite = checkBoxes[i].id;
+                }
+            }
+            let animals = []
+            for(let i = 0; i < radioBoxes.length; i++) {
+                if(radioBoxes[i].checked) {
+                    animals.push(radioBoxes[i].id)
+                }
+            }
+            let animalsString = '';
+            for (let i = 0; i < animals.length; i++) {
+                animalsString += animals[i] + " "
+            }
+
+            outputString = `Name: ${name}<br/>
+                            Birthday: ${birthday}<br/>
+                            Email: ${email}<br/>
+                            Telephone: ${tel}<br/>
+                            Favorite pizza topping: ${toppingFavorite}<br/>
+                            You like these animals: ${animalsString}<br/>
+                            color: ${color}<br/>
+                            time: ${time}<br/>
+                            number: ${number}<br/>
+                            url: ${url}<br/>
+                            volume: ${volume}<br/>
+                            search: ${search}
+                           `;
+            document.getElementById('output').innerHTML = outputString;
+            return true
+        }
+    </script>
+    
+</body>
+</html>
